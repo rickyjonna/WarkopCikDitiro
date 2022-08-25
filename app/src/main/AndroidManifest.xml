@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.warkopcikditiro">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WarkopCikDitiro">
+        <activity
+            android:name=".UserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".IngredientActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProductStockActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TableActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PartnerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AgentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProductCategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddProductActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".ProductActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".CashierActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KitchenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OrderListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OnBoardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AuthActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

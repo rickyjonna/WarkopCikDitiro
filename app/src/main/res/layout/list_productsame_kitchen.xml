@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <android.widget.Button
+        android:id="@+id/btproductsame"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_smoothrectangle"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Nasi Goreng"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+    <android.widget.Button
+        android:id="@+id/tvproductsame"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/shape_circle"
+        android:backgroundTint="@color/red"
+        android:text="5"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+</RelativeLayout>
