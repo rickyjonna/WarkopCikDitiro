@@ -62,6 +62,7 @@ public class AddProductFormulaIngredientAdapter extends RecyclerView.Adapter<Add
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){
                         listener.onitemclick(position);
+                        itemView.setVisibility(View.GONE);
                     }
                 }
             });

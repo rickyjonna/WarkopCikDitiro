@@ -25,7 +25,7 @@
         android:id="@+id/etamount"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="0"
+        android:hint="0"
         android:textSize="30dp"
         android:inputType="number"
         android:layout_marginRight="10dp"

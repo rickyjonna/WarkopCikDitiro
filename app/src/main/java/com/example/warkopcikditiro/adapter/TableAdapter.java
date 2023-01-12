@@ -64,7 +64,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             holder.bttable.setText(table.getnumber()+"-"+table.getextend());
         }
         if(table.getstatus().equals("Available")){
-            holder.bttable.setBackgroundTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.brown)));
+            holder.bttable.setBackgroundTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.green)));
         }else{
             holder.bttable.setBackgroundTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.grey)));
         }

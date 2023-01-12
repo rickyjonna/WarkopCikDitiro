@@ -418,7 +418,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                         editor.putString("order_table_number",String.valueOf(tablelist.get(position).getnumber()));
                         editor.putString("order_table_extend",String.valueOf(tablelist.get(position).getextend()));
                         editor.putString("order_table_status",tablelist.get(position).getstatus());
-                        editor.remove("order_vendor_id");
+                        editor.putString("order_agent_id","1");
                         editor.remove("order_information");
                         editor.apply();
                         dialogorderbytable.dismiss();
@@ -439,7 +439,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         dialogorderbygojek.show();
         tvdogoclose.setOnClickListener(view -> dialogorderbygojek.dismiss());
         btdogoconfirm.setOnClickListener(view -> {
-            editor.putString("order_vendor_id","2");
+            editor.putString("order_agent_id","2");
             editor.putString("order_information",etdogoinformation.getText().toString());
             editor.remove("order_table_id");
             editor.remove("order_table_number");
@@ -456,7 +456,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         dialogorderbygrab.show();
         tvdogrclose.setOnClickListener(view -> dialogorderbygrab.dismiss());
         btdogrconfirm.setOnClickListener(view -> {
-            editor.putString("order_vendor_id","1");
+            editor.putString("order_agent_id","3");
             editor.putString("order_information",etdogrinformation.getText().toString());
             editor.remove("order_table_id");
             editor.remove("order_table_number");
@@ -474,11 +474,11 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         tvdotaclose.setOnClickListener(view -> dialogorderbytakeaway.dismiss());
         btdotaconfirm.setOnClickListener(view -> {
             editor.putString("order_information",etdotainformation.getText().toString());
+            editor.putString("order_agent_id","1");
             editor.remove("order_table_id");
             editor.remove("order_table_number");
             editor.remove("order_table_extend");
             editor.remove("order_table_status");
-            editor.remove("order_vendor_id");// in case error while order by table then the sharedpref stuck
             editor.apply(); // in case error while sharedpref stuck
             dialogorderbytakeaway.dismiss();
             startActivity(new Intent(this, OrderActivity.class));
@@ -511,7 +511,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                     editor.putString("order_table_extend",String.valueOf(tableorderlist.get(position).getextend()));
                     editor.putString("order_id",String.valueOf(tableorderlist.get(position).getorder_id()));
                     editor.putString("order_note",tableorderlist.get(position).getorder_note());
-                    editor.remove("order_vendor_id");
+                    editor.remove("order_agent_id");
                     editor.remove("order_information");
                     editor.apply();
                     dialogorderlist.dismiss();

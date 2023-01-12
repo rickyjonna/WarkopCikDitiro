@@ -155,7 +155,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
-                        android:hint="Ketik disini"
+                        android:hint="Ketik Disini"
                         android:inputType="number"/>
                 </LinearLayout>
             </LinearLayout>
@@ -222,8 +222,10 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
                                 android:text="Stok"
                                 android:textStyle="bold"/>
                             <EditText
@@ -240,8 +242,9 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:gravity="center_vertical"
                                 android:text="Batas Minimum"
                                 android:textStyle="bold"/>
                             <EditText
@@ -251,6 +254,24 @@
                                 android:layout_marginRight="10dp"
                                 android:hint="0"
                                 android:inputType="number"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:gravity="center_vertical"
+                                android:text="Unit"
+                                android:textStyle="bold"/>
+                            <EditText
+                                android:id="@+id/etapunitstock"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="10dp"
+                                android:hint="ex...Botol"/>
                         </LinearLayout>
                         <CheckBox
                             android:id="@+id/cbapstock"
@@ -276,6 +297,7 @@
                                 android:text="Diskon"
                                 android:textStyle="bold"/>
                             <EditText
+                                android:id="@+id/etapdiscount"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginRight="10dp"
@@ -396,6 +418,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <EditText
+                    android:id="@+id/etapinformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

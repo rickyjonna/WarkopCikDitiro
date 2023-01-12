@@ -235,7 +235,7 @@ public class OrderActivity extends AppCompatActivity{
 
     public void goback(View view){
         editor.remove("order_table_id");
-        editor.remove("order_vendor_id");
+        editor.remove("order_agent_id");
         editor.remove("order_information");
         editor.apply();
         finish();
@@ -247,7 +247,8 @@ public class OrderActivity extends AppCompatActivity{
             orderformjo.put("token",sharedpref.getString("token", null));
             orderformjo.put("merchant_id",sharedpref.getString("merchant_id", null));
             orderformjo.put("table_id",sharedpref.getString("order_table_id", null));
-            orderformjo.put("vendor_id",sharedpref.getString("order_vendor_id",null));
+            orderformjo.put("user_id",sharedpref.getString("user_id", null));
+            orderformjo.put("agent_id",sharedpref.getString("order_agent_id",null));
             orderformjo.put("information",sharedpref.getString("order_information",null));
             orderformjo.put("note", etonote.getText().toString());
             JSONArray productidjs = new JSONArray();
@@ -268,7 +269,7 @@ public class OrderActivity extends AppCompatActivity{
                     if(response.getString("message").equals("Order Telah Dibuat")){
                         Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
                         editor.remove("order_table_id");
-                        editor.remove("order_vendor_id");
+                        editor.remove("order_agent_id");
                         editor.remove("order_information");
                         editor.apply();
                         OrderActivity.this.finish();

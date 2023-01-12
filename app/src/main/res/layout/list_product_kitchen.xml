@@ -70,13 +70,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/ic_refresh_50"/>
+            android:background="@drawable/ic_refreshblue_50"/>
         <ImageButton
             android:id="@+id/ibkrvpdone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/ic_done_50"/>
+            android:background="@drawable/ic_donegreen_50"/>
+        <ImageButton
+            android:id="@+id/ibkrvpserve"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_serve_50"/>
         <ImageButton
             android:id="@+id/ibkrvpinformation"
             android:layout_width="match_parent"

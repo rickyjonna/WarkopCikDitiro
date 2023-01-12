@@ -27,6 +27,7 @@ public class ProductKitchenAdapter extends RecyclerView.Adapter<ProductKitchenAd
         void ondeleteclick(int position);
         void onprocessclick(int position);
         void ondoneclick(int position);
+        void onserveclick(int position);
     }
 
     public void setonitemclicklistener(onitemclicklistener xlistener){
@@ -51,15 +52,32 @@ public class ProductKitchenAdapter extends RecyclerView.Adapter<ProductKitchenAd
         holder.tvkrvptotal.setText(String.valueOf(product.gettotal()));
         switch (product.getstatus_id()){
             case 1 :
+                holder.ibkrvpcancel.setBackgroundResource(R.drawable.ic_cancel_50);
+                holder.ibkrvpprocess.setBackgroundResource(R.drawable.ic_refreshblue_50);
+                holder.ibkrvpdone.setVisibility(View.INVISIBLE);
+                holder.ibkrvpserve.setVisibility(View.INVISIBLE);
+                holder.ibkrvpinformation.setVisibility(View.INVISIBLE);
                 break;
             case 2 :
                 holder.ibkrvpcancel.setVisibility(View.INVISIBLE);
-                holder.ibkrvpprocess.setBackgroundResource(R.drawable.ic_refreshblue_50);
+                holder.ibkrvpprocess.setVisibility(View.INVISIBLE);
+                holder.ibkrvpdone.setBackgroundResource(R.drawable.ic_donegreen_50);
+                holder.ibkrvpserve.setVisibility(View.INVISIBLE);
+                holder.ibkrvpinformation.setVisibility(View.INVISIBLE);
                 break;
             case 3:
                 holder.ibkrvpcancel.setVisibility(View.INVISIBLE);
                 holder.ibkrvpprocess.setVisibility(View.INVISIBLE);
-                holder.ibkrvpdone.setBackgroundResource(R.drawable.ic_donegreen_50);
+                holder.ibkrvpdone.setVisibility(View.INVISIBLE);
+                holder.ibkrvpserve.setBackgroundResource(R.drawable.ic_serve_50);
+                holder.ibkrvpinformation.setVisibility(View.INVISIBLE);
+                break;
+            case 4:
+                holder.ibkrvpcancel.setVisibility(View.INVISIBLE);
+                holder.ibkrvpprocess.setVisibility(View.INVISIBLE);
+                holder.ibkrvpdone.setVisibility(View.INVISIBLE);
+                holder.ibkrvpserve.setVisibility(View.INVISIBLE);
+                holder.ibkrvpinformation.setBackgroundResource(R.drawable.ic_info_50);
                 break;
         }
     }
@@ -72,7 +90,7 @@ public class ProductKitchenAdapter extends RecyclerView.Adapter<ProductKitchenAd
 
     public static class ProductKitchenViewHolder extends RecyclerView.ViewHolder {
         TextView tvkrvpnumber, tvkrvpname, tvkrvpstatus, tvkrvptotal;
-        ImageButton ibkrvpcancel, ibkrvpprocess, ibkrvpdone, ibkrvpinformation;
+        ImageButton ibkrvpcancel, ibkrvpprocess, ibkrvpdone, ibkrvpserve, ibkrvpinformation;
         public ProductKitchenViewHolder(@NonNull View itemView, onitemclicklistener listener) {
             super(itemView);
 
@@ -83,6 +101,7 @@ public class ProductKitchenAdapter extends RecyclerView.Adapter<ProductKitchenAd
             ibkrvpcancel = itemView.findViewById(R.id.ibkrvpcancel);
             ibkrvpprocess = itemView.findViewById(R.id.ibkrvpprocess);
             ibkrvpdone = itemView.findViewById(R.id.ibkrvpdone);
+            ibkrvpserve = itemView.findViewById(R.id.ibkrvpserve);
             ibkrvpinformation = itemView.findViewById(R.id.ibkrvpinformation);
 
             ibkrvpcancel.setOnClickListener(view -> {
@@ -111,6 +130,17 @@ public class ProductKitchenAdapter extends RecyclerView.Adapter<ProductKitchenAd
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             listener.ondoneclick(position);
+                        }
+                    }
+                }
+            });
+            ibkrvpserve.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onserveclick(position);
                         }
                     }
                 }

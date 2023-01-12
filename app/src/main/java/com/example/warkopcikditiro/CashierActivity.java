@@ -274,6 +274,7 @@ public class CashierActivity extends AppCompatActivity {
                     paymentlist.add(payment);
                 }
                 setspinnerpaymentlist(paymentlist);
+                Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -136,7 +136,7 @@ public class KitchenActivity extends AppCompatActivity {
         JsonObjectRequest jororderlistlist = new JsonObjectRequest(Request.Method.GET, ConstantUrl.KITCHEN, null, response -> {
             try{
                 JSONObject joresults = response.getJSONObject("results");
-                JSONObject joorderlist = joresults.getJSONObject("order_list_notdone");
+                JSONObject joorderlist = joresults.getJSONObject("order_list");
                 JSONArray jatablelist = joorderlist.getJSONArray("table");
                 for(int i=0; i<jatablelist.length();i++) {
                     JSONObject jotable = jatablelist.getJSONObject(i);
@@ -189,6 +189,7 @@ public class KitchenActivity extends AppCompatActivity {
                     sameproductlist.add(product);
                 }
                 setrvsameproductlist(sameproductlist);
+                Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -247,7 +248,7 @@ public class KitchenActivity extends AppCompatActivity {
                 //product list ordered
                 productlist = new ArrayList<>();
                 JSONObject joresult = response.getJSONObject("results");
-                JSONArray jaorderlist = joresult.getJSONArray("order_list");
+                JSONArray jaorderlist = joresult.getJSONArray("order_list_notdone");
                 for(int i=0; i<jaorderlist.length();i++) {
                     JSONObject joproductordered = jaorderlist.getJSONObject(i);
                     product = new Product();
@@ -261,6 +262,7 @@ public class KitchenActivity extends AppCompatActivity {
                     productlist.add(product);
                 }
                 setrvproductlist(productlist);
+                Toast.makeText(this,response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -282,6 +284,10 @@ public class KitchenActivity extends AppCompatActivity {
             @Override
             public void ondoneclick(int position) {
                 changeorderliststatus(xproductlist, position, 3);
+            }
+            @Override
+            public void onserveclick(int position) {
+                changeorderliststatus(xproductlist, position, 4);
             }
         });
         rvkproductlist.setAdapter(productkitchenadapter);

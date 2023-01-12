@@ -36,7 +36,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -57,20 +59,26 @@ public class AddProductActivity extends AppCompatActivity {
         AddProductAgentAdapter addproductagentadapter;
     Partner partner;
     List<Partner> partnerlist;
-    EditText etapstock, etapminstock;
-    CheckBox cbapstock, cbapformula;
+    EditText etapstock, etapminstock, etapunitstock;
+    EditText etapdiscount;
+    Button  btappercent, btaprp;
+    TextView tvappercent, tvaprp;
+    boolean isdiscountonpercent = true;
+    CheckBox cbapstock;
+    boolean isonstock = false;
+    boolean isonformula = false;
+    CheckBox cbapformula;
     RecyclerView rvdapilist;
         Ingredient ingredient;
         List<Ingredient> ingredientlist;
         AddProductFormulaIngredientAdapter addproductformulaingredientadapter;
+    Dialog dialog_formula;
     RecyclerView rvapselectedingredient;
         List<Ingredient> selectedingredientlist;
         SelectedIngredientAdapter selectedingredientadapter;
-    Button btdapfok, btappercent, btaprp;
+    Button btdapfok;
+    EditText etapinformation;
     Button btapsave;
-    TextView tvappercent, tvaprp;
-    Dialog dialog_formula;
-    String ingredient_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,15 +111,18 @@ public class AddProductActivity extends AppCompatActivity {
         spappartner = findViewById(R.id.spappartner);
         etapstock = findViewById(R.id.etapstock);
         etapminstock = findViewById(R.id.etapminstock);
+        etapunitstock = findViewById(R.id.etapunitstock);
         cbapstock = findViewById(R.id.cbapstock);
-        cbapformula = findViewById(R.id.cbapformula);
-        rvdapilist = dialog_formula.findViewById(R.id.rvdapilist);
-        btdapfok = dialog_formula.findViewById(R.id.btdapfok);
-        rvapselectedingredient = findViewById(R.id.rvapselectedingredient);
+        etapdiscount = findViewById(R.id.etapdiscount);
         btappercent = findViewById(R.id.btappercent);
         tvappercent = findViewById(R.id.tvappercent);
         btaprp = findViewById(R.id.btaprp);
         tvaprp = findViewById(R.id.tvaprp);
+        cbapformula = findViewById(R.id.cbapformula);
+        rvdapilist = dialog_formula.findViewById(R.id.rvdapilist);
+        btdapfok = dialog_formula.findViewById(R.id.btdapfok);
+        rvapselectedingredient = findViewById(R.id.rvapselectedingredient);
+        etapinformation = findViewById(R.id.etapinformation);
         btapsave = findViewById(R.id.btapsave);
 
         //get data + fill layout
@@ -137,14 +148,18 @@ public class AddProductActivity extends AppCompatActivity {
                 hasstock();
             } else
                 {
-                    etapstock.setText("0");
-                    etapminstock.setText("0");
+                    etapstock.setText("");
+                    etapminstock.setText("");
+                    etapunitstock.setText("");
                     hasnostock();
                 }
         });
+        discountpercent();
         cbapformula.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b)
             {
+                hasformula();
+                extractapi_ingredient();
                 opendialogformula();
             } else
             {
@@ -152,7 +167,6 @@ public class AddProductActivity extends AppCompatActivity {
                 setrvselectedingredientlist(selectedingredientlist);
             }
         });
-        discountrp();
         tvappercent.setOnClickListener(view -> discountpercent());
         tvaprp.setOnClickListener(view -> discountrp());
         btapsave.setOnClickListener(view -> save_product());
@@ -171,7 +185,7 @@ public class AddProductActivity extends AppCompatActivity {
                     productcategorylist.add(productcategory);
                 }
                 setspinnercategory(productcategorylist);
-                JSONArray jaagent = joresults.getJSONArray("vendor");
+                JSONArray jaagent = joresults.getJSONArray("agent");
                 for(int i=0; i<jaagent.length();i++) {
                     JSONObject joagent = jaagent.getJSONObject(i);
                     agent = new Agent();
@@ -186,7 +200,7 @@ public class AddProductActivity extends AppCompatActivity {
                     partner = new Partner();
                     partner.setId(jopartner.getInt("id"));
                     partner.setOwner(jopartner.getString("owner"));
-                    partner.setProfit(jopartner.getInt("profit"));
+                    partner.setProfit(jopartner.getInt("percentage"));
                     partnerlist.add(partner);
                 }
                 setspinnerpartner(partnerlist);
@@ -196,26 +210,6 @@ public class AddProductActivity extends AppCompatActivity {
             }
         }, error -> Toast.makeText(this,"Koneksi Terputus Harap Login Ulang", Toast.LENGTH_SHORT).show());
         Volley.newRequestQueue(this).add(joraddproduct);
-        JsonObjectRequest joringredient = new JsonObjectRequest(Request.Method.GET, ConstantUrl.INGREDIENT, null, response -> {
-            try{
-                JSONObject joresults = response.getJSONObject("results");
-                JSONArray jaingredient = joresults.getJSONArray("ingredient");
-                for(int i=0; i<jaingredient.length();i++) {
-                    JSONObject joingredient = jaingredient.getJSONObject(i);
-                    ingredient = new Ingredient();
-                    ingredient.setId(joingredient.getInt("id"));
-                    ingredient.setName(joingredient.getString("name"));
-                    ingredient.setUnit(joingredient.getString("unit"));
-                    ingredient.setAmount(joingredient.getInt("amount"));
-                    ingredient.setMinimalamount(joingredient.getInt("minimum_amount"));
-                    ingredientlist.add(ingredient);
-                }
-                setrvingredientlist(ingredientlist);
-            }catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, error -> Toast.makeText(this,"Koneksi Terputus Harap Login Ulang", Toast.LENGTH_SHORT).show());
-        Volley.newRequestQueue(this).add(joringredient);
     }
 
     private void setspinnercategory(List<ProductCategory> xproductcategorylist) {
@@ -252,9 +246,36 @@ public class AddProductActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void extractapi_ingredient() {
+        JsonObjectRequest joringredient = new JsonObjectRequest(Request.Method.GET, ConstantUrl.INGREDIENT, null, response -> {
+            try{
+                ingredientlist =  new ArrayList<>();
+                JSONObject joresults = response.getJSONObject("results");
+                JSONArray jaingredient = joresults.getJSONArray("ingredient");
+                for(int i=0; i<jaingredient.length();i++) {
+                    JSONObject joingredient = jaingredient.getJSONObject(i);
+                    ingredient = new Ingredient();
+                    ingredient.setId(joingredient.getInt("id"));
+                    ingredient.setName(joingredient.getString("name"));
+                    ingredient.setUnit(joingredient.getString("unit"));
+                    ingredient.setAmount(joingredient.getInt("amount"));
+                    ingredient.setMinimalamount(joingredient.getInt("minimum_amount"));
+                    ingredientlist.add(ingredient);
+                }
+                setrvingredientlist(ingredientlist);
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> Toast.makeText(this,"Koneksi Terputus Harap Login Ulang", Toast.LENGTH_SHORT).show());
+        Volley.newRequestQueue(this).add(joringredient);
+    }
+
     private void opendialogformula() {
         dialog_formula.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog_formula.show();
+        dialog_formula.setCancelable(false);
+        dialog_formula.setCanceledOnTouchOutside(false);
         btdapfok.setVisibility(View.INVISIBLE);
         btdapfok.setOnClickListener(view -> dialog_formula.dismiss());
     }
@@ -279,16 +300,25 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void hasstock() {
+        isonstock = true;
         etapstock.setEnabled(true);
         etapminstock.setEnabled(true);
+        etapunitstock.setEnabled(true);
     }
 
     private void hasnostock() {
+        isonstock = false;
         etapstock.setEnabled(false);
         etapminstock.setEnabled(false);
+        etapunitstock.setEnabled(false);
+    }
+
+    private void hasformula() {
+        isonformula = true;
     }
 
     private void discountpercent() {
+        isdiscountonpercent = true;
         btappercent.setVisibility(View.VISIBLE);
         tvappercent.setVisibility(View.GONE);
         btaprp.setVisibility(View.GONE);
@@ -296,6 +326,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void discountrp() {
+        isdiscountonpercent = false;
         btappercent.setVisibility(View.GONE);
         tvappercent.setVisibility(View.VISIBLE);
         btaprp.setVisibility(View.VISIBLE);
@@ -305,18 +336,66 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void save_product() {
         JSONObject joform = new JSONObject();
+        JSONArray jsonarray = new JSONArray();
         try{
+            int price,discount;
+            if (etapprice.getText().toString().matches("")){
+                price = 0;
+            }else{
+                price = Integer.parseInt(etapprice.getText().toString());
+            }
+            if (etapdiscount.getText().toString().matches("")){
+                discount = 0;
+            }else{
+                discount = Integer.parseInt(etapdiscount.getText().toString());
+            }
             joform.put("merchant_id",1);
-            joform.put("product_type_id",partner.getId());
+            joform.put("partner_id",partner.getId());
             joform.put("product_category_id",productcategory.getid());
             joform.put("name",etapname.getText().toString());
-            joform.put("name",etapprice.getText().toString());
+            joform.put("price",price);
+            if (isdiscountonpercent){
+                joform.put("discount",price*discount/100);
+            }else{
+                joform.put("discount",discount);
+            }
+            if (isonstock){
+                joform.put("hasstock",1);
+                if (etapstock.getText().toString().trim().equalsIgnoreCase("")) {
+                    etapstock.setError("This field can not be blank");
+                }else{
+                    joform.put("amount", Integer.parseInt(etapstock.getText().toString()));
+                }
+                if (etapminstock.getText().toString().trim().equalsIgnoreCase("")) {
+                    etapminstock.setError("This field can not be blank");
+                }else{
+                    joform.put("minimum_amount", Integer.parseInt(etapminstock.getText().toString()));
+                }
+                if (etapunitstock.getText().toString().trim().equalsIgnoreCase("")) {
+                    etapunitstock.setError("This field can not be blank");
+                }else{
+                    joform.put("unit", etapunitstock.getText().toString());
+                }
+            }else{
+                joform.put("hasstock",0);
+            }
+            if (isonformula){
+                joform.put("isformula",1);
+                for (int i=0; i<selectedingredientlist.size(); i++){
+                    jsonarray.put(2*i+0,selectedingredientlist.get(i).getId());
+                    jsonarray.put(2*i+1,selectedingredientlist.get(i).getAmount());
+                }
+                joform.put("ingredient",jsonarray);
+            }else{
+                joform.put("isformula",0);
+            }
+            joform.put("information",etapinformation.getText().toString());
         }catch (JSONException e){
             e.printStackTrace();
         }
-        JsonObjectRequest joraddagent = new JsonObjectRequest(Request.Method.POST, ConstantUrl.INSERTAGENT, joform, response -> {
+        JsonObjectRequest joraddagent = new JsonObjectRequest(Request.Method.POST, ConstantUrl.INSERTPRODUCT, joform, response -> {
             try{
-                if(response.getString("message").equals("InsertAgent - Success")){
+                if(response.getString("message").equals("InsertProduct - Success")){
                     finish();
                     startActivity(getIntent());
                 }
