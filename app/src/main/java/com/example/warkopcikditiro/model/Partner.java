@@ -3,15 +3,15 @@ package com.example.warkopcikditiro.model;
 public class Partner {
     private int id;
     private String owner;
-    private int profit;
+    private int percentage;
 
     public Partner() {
     }
 
-    public Partner(int id, String owner, int profit) {
+    public Partner(int id, String owner, int percentage) {
         this.id = id;
         this.owner = owner;
-        this.profit = profit;
+        this.percentage = percentage;
     }
 
     public int getId() {
@@ -30,12 +30,12 @@ public class Partner {
         this.owner = owner;
     }
 
-    public int getProfit() {
-        return profit;
+    public int getPercentage() {
+        return percentage;
     }
 
-    public void setProfit(int profit) {
-        this.profit = profit;
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
     }
 
     @Override

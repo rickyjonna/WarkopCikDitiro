@@ -49,7 +49,7 @@ public class PartnerAdapter extends RecyclerView.Adapter<PartnerAdapter.PartnerV
     public void onBindViewHolder(@NonNull PartnerViewHolder holder, int position) {
         Partner partner = mpartnerlist.get(position);
         holder.tvowner.setText(partner.getOwner());
-        holder.tvprofit.setText(String.valueOf(partner.getProfit()));
+        holder.tvprofit.setText(String.valueOf(partner.getPercentage()));
     }
 
     @Override

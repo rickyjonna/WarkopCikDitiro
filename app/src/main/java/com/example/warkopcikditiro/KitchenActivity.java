@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -50,6 +51,7 @@ public class KitchenActivity extends AppCompatActivity {
         InformationAdapter informationgoadapter, informationgradapter, informationadapter;
     //rightbar
     TextView tvknote, tvkorderinformation;
+    String order_id;
     RecyclerView rvkproductlist;
         Product product;
         List<Product> productlist;
@@ -125,7 +127,10 @@ public class KitchenActivity extends AppCompatActivity {
 
 
         //install widget
-        ibtkback.setOnClickListener(view -> finish());
+        ibtkback.setOnClickListener(view -> {
+                finish();
+                startActivity(new Intent(KitchenActivity.this, OnBoardActivity.class));
+        });
         btdkpsprocess.setOnClickListener(view -> {
             dialogsameproduct.dismiss();
             processbyproductsame();
@@ -201,7 +206,7 @@ public class KitchenActivity extends AppCompatActivity {
     private void setrvorderlisttable(List<Table> xtablelist) {
         tableorderlistadapter = new TableOrderListAdapter(this,xtablelist);
         tableorderlistadapter.setonitemclicklistener(position -> {
-            String order_id = String.valueOf(xtablelist.get(position).getorder_id());
+            order_id = String.valueOf(xtablelist.get(position).getorder_id());
             extractapi_orderlistlist(order_id);
             tvkorderinformation.setText("Meja " + String.valueOf(xtablelist.get(position).getnumber()));
             tvknote.setText(xtablelist.get(position).getorder_note());
@@ -212,7 +217,7 @@ public class KitchenActivity extends AppCompatActivity {
     private void setrvorderlistgo(List<Information> xinformationgolist) {
         informationgoadapter = new InformationAdapter(this, xinformationgolist);
         informationgoadapter.setonitemclicklistener(position -> {
-            String order_id = String.valueOf(xinformationgolist.get(position).getorder_id());
+            order_id = String.valueOf(xinformationgolist.get(position).getorder_id());
             extractapi_orderlistlist(order_id);
             tvkorderinformation.setText(xinformationgolist.get(position).getorder_information());
             tvknote.setText(xinformationgolist.get(position).getorder_note());
@@ -223,7 +228,7 @@ public class KitchenActivity extends AppCompatActivity {
     private void setrvorderlistgr(List<Information> xinformationgrlist) {
         informationgradapter = new InformationAdapter(this, xinformationgrlist);
         informationgradapter.setonitemclicklistener(position -> {
-            String order_id = String.valueOf(xinformationgrlist.get(position).getorder_id());
+            order_id = String.valueOf(xinformationgrlist.get(position).getorder_id());
             extractapi_orderlistlist(order_id);
             tvkorderinformation.setText(xinformationgrlist.get(position).getorder_information());
             tvknote.setText(xinformationgrlist.get(position).getorder_note());
@@ -234,7 +239,7 @@ public class KitchenActivity extends AppCompatActivity {
     private void setrvorderlistta(List<Information> xinformationlist) {
         informationadapter = new InformationAdapter(this, xinformationlist);
         informationadapter.setonitemclicklistener(position -> {
-            String order_id = String.valueOf(xinformationlist.get(position).getorder_id());
+            order_id = String.valueOf(xinformationlist.get(position).getorder_id());
             extractapi_orderlistlist(order_id);
             tvkorderinformation.setText(xinformationlist.get(position).getorder_information());
             tvknote.setText(xinformationlist.get(position).getorder_note());
@@ -321,9 +326,8 @@ public class KitchenActivity extends AppCompatActivity {
         JsonObjectRequest jpupdateolstatus = new JsonObjectRequest(Request.Method.POST, ConstantUrl.UPDATEORDERLISTSTATUS+String.valueOf(orderlist_id), joformupdateolstatus, response -> {
             try{
                 if(response.getString("message").equals("OrderList - UpdateStatus - Success")){
-                    finish();
-                    startActivity(getIntent());
-                }
+                    extractapi_orderlistlist(order_id);
+            }
                 Toast.makeText(this,response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {
                 e.printStackTrace();

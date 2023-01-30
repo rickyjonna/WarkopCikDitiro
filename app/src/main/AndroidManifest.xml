@@ -49,7 +49,7 @@
         <activity
             android:name=".ProductActivity"
             android:exported="true"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".CashierActivity"
             android:exported="true"

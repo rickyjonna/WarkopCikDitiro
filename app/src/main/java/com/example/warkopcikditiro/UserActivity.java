@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -91,7 +92,10 @@ public class UserActivity extends AppCompatActivity {
         tvuusertype.setText(sharedpref.getString("user_type", ""));
 
         //install widget
-        ibtuback.setOnClickListener(view -> finish());
+        ibtuback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         btuadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());

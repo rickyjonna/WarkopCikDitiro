@@ -66,7 +66,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Tes Nama"
-                android:gravity="center"/>
+                android:gravity="center_vertical"/>
             <TextView
                 android:id="@+id/tvousertype"
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="Tes Tipe"
-                android:gravity="center"/>
+                android:gravity="center_vertical"/>
         </LinearLayout>
         <TextView
             android:id="@+id/tvotitle"

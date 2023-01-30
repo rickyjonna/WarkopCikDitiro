@@ -1,5 +1,6 @@
 package com.example.warkopcikditiro.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,10 +34,11 @@ public class SelectedIngredientAdapter extends RecyclerView.Adapter<SelectedIngr
         return new SelectedIngredientViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SelectedIngredientViewHolder holder, int position) {
         Ingredient selectedingredient = mselectedingredientlist.get(position);
-        holder.tvnumber.setText(String.valueOf(position+1));
+        holder.tvnumber.setText(String.valueOf(position+1)+".");
         holder.tvname.setText(selectedingredient.getName());
         holder.tvunit.setText(selectedingredient.getUnit());
         holder.textWatcher.updatePosition(position);

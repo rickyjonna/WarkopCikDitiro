@@ -6,16 +6,18 @@ public class Agent {
     private String payment_information;
     private String name;
     private int percentage;
+    private int price;
 
     public Agent() {
     }
 
-    public Agent(int id, int payment_id, String name, int percentage) {
+    public Agent(int id, int payment_id, String name, int percentage, int price) {
         this.id = id;
         this.payment_id = payment_id;
         this.payment_information = payment_information;
         this.name = name;
         this.percentage = percentage;
+        this.price = price;
     }
 
     public int getId() {
@@ -56,5 +58,14 @@ public class Agent {
 
     public void setPercentage(int percentage) {
         this.percentage = percentage;
+    }
+
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

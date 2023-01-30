@@ -204,30 +204,66 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         //4.Orderlist
         iborderlist.setOnClickListener(view -> opendialogorderlist());
         //5.Kitchen
-        ibkitchen.setOnClickListener(view -> startActivity(new Intent(this, KitchenActivity.class)));
+        ibkitchen.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, KitchenActivity.class));
+        });
         //6.Cashier
-        ibtcashier.setOnClickListener(view -> startActivity(new Intent(this,CashierActivity.class)));
+        ibtcashier.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this,CashierActivity.class));
+        });
         //Management
         //7.Product
-        btdproduct.setOnClickListener(view -> startActivity(new Intent(this,ProductActivity.class)));
+        btdproduct.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(OnBoardActivity.this, ProductActivity.class));
+        });
         //8.Product Category
-        btdproductcategory.setOnClickListener(view -> startActivity(new Intent(this, ProductCategoryActivity.class)));
+        btdproductcategory.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, ProductCategoryActivity.class));
+        });
         //9.Agent
-        btdagent.setOnClickListener(view -> startActivity(new Intent(this, AgentActivity.class)));
+        btdagent.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, AgentActivity.class));
+        });
         //10.Ingredient
-        btdingredient.setOnClickListener(view -> startActivity(new Intent(this, IngredientActivity.class)));
+        btdingredient.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, IngredientActivity.class));
+        });
         //11.Formula
-        btdformula.setOnClickListener(view -> startActivity(new Intent(this, ProductCategoryActivity.class)));
+        btdformula.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, ProductCategoryActivity.class));
+        });
         //12.Partner
-        btdpartner.setOnClickListener(view -> startActivity(new Intent(this, PartnerActivity.class)));
+        btdpartner.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, PartnerActivity.class));
+        });
         //13.Table
-        btdtable.setOnClickListener(view -> startActivity(new Intent(this, TableActivity.class)));
+        btdtable.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, TableActivity.class));
+        });
         //14.Stock
-        btdpstock.setOnClickListener(view -> startActivity(new Intent(this, ProductCategoryActivity.class)));
+        btdpstock.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, ProductStockActivity.class));
+        });
         //15.User
-        btduser.setOnClickListener(view -> startActivity(new Intent(this, UserActivity.class)));
+        btduser.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, UserActivity.class));
+        });
         //16.Payment
-        btdpayment.setOnClickListener(view -> startActivity(new Intent(this, PaymentActivity.class)));
+        btdpayment.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, PaymentActivity.class));
+        });
     }
 
     //Fungsi
@@ -286,6 +322,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                 }
                 esingredientadapter = new EmptyStockAdapter(this, emptystocklisti);
                 rvemptystocki.setAdapter(esingredientadapter);
+                Toast.makeText(getApplicationContext(), objectdashboard.getString("message"), Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

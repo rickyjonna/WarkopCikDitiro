@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -104,7 +105,10 @@ public class AgentActivity extends AppCompatActivity {
         percentstate();
 
         //install widget
-        ibtaback.setOnClickListener(view -> finish());
+        ibtaback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         btaadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());

@@ -17,6 +17,7 @@
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_baseline_local_grocery_store_24.xml" value="0.14944444444444444" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.165234375" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_cancel_50.xml" value="0.165234375" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_circle.xml" value="0.12265625" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_delete_25.xml" value="0.165234375" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_dollar_100.xml" value="0.165234375" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_done_50.xml" value="0.165234375" />
@@ -34,12 +35,14 @@
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/ic_shop_100.xml" value="0.165234375" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/photobutton.xml" value="0.15555555555555556" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/shape_circle.xml" value="0.165234375" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/shape_circle_new.xml" value="0.12265625" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/shape_smoothrectangle.xml" value="0.165234375" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/drawable/smoothrectanglebackground.xml" value="0.11777777777777777" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_add_product.xml" value="0.41379310344827586" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_agent.xml" value="0.16" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_auth.xml" value="0.16" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_cashier.xml" value="0.12" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_formula.xml" value="0.1356907894736842" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_ingredient.xml" value="0.11321271929824561" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_kitchen.xml" value="0.16" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_main.xml" value="0.18296296296296297" />
@@ -51,10 +54,10 @@
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_product.xml" value="0.10553728070175439" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_product_category.xml" value="0.11951754385964912" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_stock.xml" value="0.11321271929824561" />
-        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_stock_product.xml" value="0.12828947368421054" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_stock_product.xml" value="0.33" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_table.xml" value="0.11513157894736842" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/activity_user.xml" value="0.12171052631578948" />
-        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_addproduct_formula.xml" value="0.33" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_addproduct_formula.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_changepassword.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_checkout.xml" value="0.10553728070175439" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_kitchen_sameproduct.xml" value="0.12774122807017543" />
@@ -66,11 +69,12 @@
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_orderbytable.xml" value="0.16" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_orderbytakeaway.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_product_confirmdelete.xml" value="0.13459429824561403" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialog_product_stocknotif.xml" value="0.16875" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/dialogorder.xml" value="0.18" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/grid_item_emptystock.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_active_user.xml" value="0.22" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_addproduct_agentlist.xml" value="0.16875" />
-        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_addproduct_ingredient.xml" value="0.22" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_addproduct_ingredient.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_agent.xml" value="0.18" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_empty_stock.xml" value="0.1" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_gojek_information.xml" value="0.10142543859649122" />
@@ -90,9 +94,11 @@
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_product_ordered.xml" value="0.17" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_product_ordered_order.xml" value="0.15158991228070176" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_product_ordered_orderlist.xml" value="0.15158991228070176" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_product_stocknotif.xml" value="0.33" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_productcategory.xml" value="0.23154164205552275" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_productlist.xml" value="0.2" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_productsame_kitchen.xml" value="0.25" />
+        <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_productstock.xml" value="0.16875" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_rvtable.xml" value="0.22" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_selectedingredient.xml" value="0.21" />
         <entry key="..\:/Users/RickyJonna/AndroidStudioProjects/WarkopCikDitiro/app/src/main/res/layout/list_stok_habis.xml" value="0.33" />

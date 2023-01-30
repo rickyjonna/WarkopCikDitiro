@@ -7,33 +7,39 @@
     android:padding="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center">
+        android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:src="@drawable/contohfotoproduk" />
+            android:src="@drawable/contohfotoproduk"
+            android:layout_centerInParent="true"/>
         <ImageButton
             android:id="@+id/ibtprvdelete"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/shape_circle"
             android:backgroundTint="@color/red"
             android:src="@drawable/ic_delete_25" />
+        <TextView
+            android:id="@+id/tvprvstock"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_alignParentLeft="true" />
     </RelativeLayout>
     <TextView
         android:id="@+id/tvprvproductname"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Badak"
+        android:layout_height="wrap_content"
         android:gravity="center"/>
     <TextView
         android:id="@+id/tvprvproductprice"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.75"
-        android:text="20.000,00"
+        android:layout_height="wrap_content"
         android:gravity="center"/>
 </LinearLayout>

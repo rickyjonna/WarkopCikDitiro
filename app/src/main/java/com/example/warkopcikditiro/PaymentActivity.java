@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -88,7 +89,10 @@ public class PaymentActivity extends AppCompatActivity {
         percentstate();
 
         //install widget
-        ibtpayback.setOnClickListener(view -> finish());
+        ibtpayback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         btpayadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());

@@ -31,14 +31,10 @@ import com.example.warkopcikditiro.model.Agent;
 import com.example.warkopcikditiro.model.Ingredient;
 import com.example.warkopcikditiro.model.Partner;
 import com.example.warkopcikditiro.model.ProductCategory;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -186,7 +182,7 @@ public class AddProductActivity extends AppCompatActivity {
                 }
                 setspinnercategory(productcategorylist);
                 JSONArray jaagent = joresults.getJSONArray("agent");
-                for(int i=0; i<jaagent.length();i++) {
+                for(int i=1; i<jaagent.length();i++) {
                     JSONObject joagent = jaagent.getJSONObject(i);
                     agent = new Agent();
                     agent.setId(joagent.getInt("id"));
@@ -200,7 +196,7 @@ public class AddProductActivity extends AppCompatActivity {
                     partner = new Partner();
                     partner.setId(jopartner.getInt("id"));
                     partner.setOwner(jopartner.getString("owner"));
-                    partner.setProfit(jopartner.getInt("percentage"));
+                    partner.setPercentage(jopartner.getInt("percentage"));
                     partnerlist.add(partner);
                 }
                 setspinnerpartner(partnerlist);
@@ -336,7 +332,8 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void save_product() {
         JSONObject joform = new JSONObject();
-        JSONArray jsonarray = new JSONArray();
+        JSONArray jsonarraystock = new JSONArray();
+        JSONArray jsonarrayagentprice = new JSONArray();
         try{
             int price,discount;
             if (etapprice.getText().toString().matches("")){
@@ -382,14 +379,23 @@ public class AddProductActivity extends AppCompatActivity {
             if (isonformula){
                 joform.put("isformula",1);
                 for (int i=0; i<selectedingredientlist.size(); i++){
-                    jsonarray.put(2*i+0,selectedingredientlist.get(i).getId());
-                    jsonarray.put(2*i+1,selectedingredientlist.get(i).getAmount());
+                    jsonarraystock.put(2*i+0,selectedingredientlist.get(i).getId());
+                    jsonarraystock.put(2*i+1,selectedingredientlist.get(i).getAmount());
                 }
-                joform.put("ingredient",jsonarray);
+                joform.put("ingredient",jsonarraystock);
             }else{
                 joform.put("isformula",0);
             }
             joform.put("information",etapinformation.getText().toString());
+            for (int i=0; i<agentlist.size(); i++){
+                if(agentlist.get(i).getPrice() == 0){
+                    continue;
+                }else {
+                    jsonarrayagentprice.put(agentlist.get(i).getId());
+                    jsonarrayagentprice.put(agentlist.get(i).getPrice());
+                }
+            }
+            joform.put("agent_price",jsonarrayagentprice);
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -397,7 +403,6 @@ public class AddProductActivity extends AppCompatActivity {
             try{
                 if(response.getString("message").equals("InsertProduct - Success")){
                     finish();
-                    startActivity(getIntent());
                 }
                 Toast.makeText(this,response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {

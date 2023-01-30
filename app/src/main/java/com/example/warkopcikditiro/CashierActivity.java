@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -151,7 +152,10 @@ public class CashierActivity extends AppCompatActivity {
         notselected();
 
         //install widget
-        ibtcback.setOnClickListener(view -> finish());
+        ibtcback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this,OnBoardActivity.class));
+        });
         etcdiscount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

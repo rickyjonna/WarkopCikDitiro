@@ -7,16 +7,18 @@ public class Product {
     private int discount;
     private int totalprice;
     private int totalstock;
+    private int minimumstock;
     private String category;
     private int total;
     private int status_id;
     private String status;
     private int orderlist_id;
+    private String unit;
 
     public Product() {
     }
 
-    public Product(int id, String name, int price, int discount, int totalprice, int totalstock, String category, int total, int status_id, String status, int orderlist_id) {
+    public Product(int id, String name, int price, int discount, int totalprice, int totalstock, String category, int total, int status_id, String status, int orderlist_id, int minimumstock, String unit) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -28,6 +30,16 @@ public class Product {
         this.status_id = status_id;
         this.status = status;
         this.orderlist_id = orderlist_id;
+        this.minimumstock = minimumstock;
+        this.unit = unit;
+    }
+
+    public int getMinimumstock() {
+        return minimumstock;
+    }
+
+    public void setMinimumstock(int minimumstock) {
+        this.minimumstock = minimumstock;
     }
 
     public int getorderlist_id() {
@@ -72,6 +84,14 @@ public class Product {
 
     public String getname() {
         return name;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public void setname(String name) {

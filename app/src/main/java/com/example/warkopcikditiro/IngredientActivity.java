@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -78,7 +79,10 @@ public class IngredientActivity extends AppCompatActivity {
         setrvingredientlist(ingredientlist);
 
         //install widget
-        ibtiback.setOnClickListener(view -> finish());
+        ibtiback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         btiadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());
@@ -146,6 +150,7 @@ public class IngredientActivity extends AppCompatActivity {
     private void extractapi_addingredient() {
         JSONObject joform = new JSONObject();
         try{
+            joform.put("merchant_id",sharedpref.getString("merchant_id",null));
             joform.put("name",etiname.getText().toString());
             joform.put("unit",etiunit.getText().toString());
             joform.put("amount",etiamount.getText().toString());

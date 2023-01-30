@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -78,7 +79,10 @@ public class TableActivity extends AppCompatActivity {
         tvtusertype.setText(sharedpref.getString("user_type", ""));
 
         //install widget
-        ibttback.setOnClickListener(view -> finish());
+        ibttback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         bttadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());

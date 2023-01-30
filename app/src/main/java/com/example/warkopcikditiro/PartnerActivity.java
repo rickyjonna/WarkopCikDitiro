@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -86,7 +87,10 @@ public class PartnerActivity extends AppCompatActivity {
         percentstate();
 
         //install widget
-        ibtptback.setOnClickListener(view -> finish());
+        ibtptback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, OnBoardActivity.class));
+        });
         btptadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());
@@ -106,7 +110,7 @@ public class PartnerActivity extends AppCompatActivity {
                     partner = new Partner();
                     partner.setId(jopartner.getInt("id"));
                     partner.setOwner(jopartner.getString("owner"));
-                    partner.setProfit(jopartner.getInt("profit"));
+                    partner.setPercentage(jopartner.getInt("percentage"));
                     partnerlist.add(partner);
                 }
                 setrvpartnerlist(partnerlist);
@@ -128,7 +132,7 @@ public class PartnerActivity extends AppCompatActivity {
                 partner_id = xpartnerlist.get(position).getId();
                 tvpttitle.setText("Edit Rekan");
                 etptowner.setText(xpartnerlist.get(position).getOwner());
-                etptprofit.setText(String.valueOf(xpartnerlist.get(position).getProfit()));
+                etptprofit.setText(String.valueOf(xpartnerlist.get(position).getPercentage()));
                 btptsave.setOnClickListener(view -> extractapi_editpartner());
             }
             @Override
@@ -136,7 +140,7 @@ public class PartnerActivity extends AppCompatActivity {
                 partner_id = xpartnerlist.get(position).getId();
                 tvpttitle.setText("Edit Rekan");
                 etptowner.setText(xpartnerlist.get(position).getOwner());
-                etptprofit.setText(String.valueOf(xpartnerlist.get(position).getProfit()));
+                etptprofit.setText(String.valueOf(xpartnerlist.get(position).getPercentage()));
                 btptsave.setOnClickListener(view -> extractapi_editpartner());
             }
             @Override
