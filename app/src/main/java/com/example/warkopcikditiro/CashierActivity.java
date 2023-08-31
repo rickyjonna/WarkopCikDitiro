@@ -87,7 +87,7 @@ public class CashierActivity extends AppCompatActivity {
         finalprice = 0;
         discount = 0;
         tax = 0;
-        payment_id = 0;
+        payment_id = 1;
         payment_discount = 0;
         ///dialog
         dialogcheckout = new Dialog(this);
@@ -347,6 +347,8 @@ public class CashierActivity extends AppCompatActivity {
         ArrayAdapter<Payment> paymentadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, xpaymentlist);
         paymentadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spcpayment.setAdapter(paymentadapter);
+        int lastIndex = paymentlist.size() - 1;
+        spcpayment.setSelection(lastIndex);
         spcpayment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -437,7 +439,7 @@ public class CashierActivity extends AppCompatActivity {
             joform.put("merchant_id","1");
             joform.put("order_id",sharedpref.getString("order_id", null));
             joform.put("user_id",sharedpref.getString("user_id", null));
-            joform.put("payment_id",payment_id); // buat payment
+            joform.put("payment_id",payment_id);
             joform.put("discount",discount);
             joform.put("tax",tax);
 
@@ -467,10 +469,13 @@ public class CashierActivity extends AppCompatActivity {
     }
 
     private void opendialogcheckout() {
+        //belum masuk discount payment
+        //belum masuk dicount basic product
+        //bill masih sementara dari android aplikasi
         dialogcheckout.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogcheckout.show();
         tvdcoclose.setOnClickListener(view -> dialogcheckout.dismiss());
-        int bill = finalprice + tax - discount - (payment_discount*finalprice/100);
+        int bill = finalprice + tax - discount;
         tvdcototalprice.setText(String.valueOf(bill));
         btdcodone.setOnClickListener(view -> extractapi_checkout());
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class TableActivity extends AppCompatActivity {
     Button bttadd;
     //rightbar
     EditText ettnumber, ettextend;
+    RadioGroup rgtstatus;
     Button bttsave;
     TextView tvttitle;
     int table_id;
@@ -70,6 +72,7 @@ public class TableActivity extends AppCompatActivity {
         tvttitle = findViewById(R.id.tvttitle);
         ettnumber = findViewById(R.id.ettnumber);
         ettextend = findViewById(R.id.ettextend);
+        rgtstatus = findViewById(R.id.rgtstatus);
         bttsave = findViewById(R.id.bttsave);
 
         //get data + fill layout
@@ -101,6 +104,7 @@ public class TableActivity extends AppCompatActivity {
                     table.setid(jotable.getInt("id"));
                     table.setnumber(jotable.getInt("number"));
                     table.setextend(jotable.getInt("extend"));
+                    table.setstatus(jotable.getString("status"));
                     tablelist.add(table);
                 }
                 setrvagentlist(tablelist);
@@ -146,6 +150,11 @@ public class TableActivity extends AppCompatActivity {
         try{
             joform.put("number",ettnumber.getText().toString());
             joform.put("extend",ettextend.getText().toString());
+            if(rgtstatus.getCheckedRadioButtonId() == R.id.rbtavailable) {
+                joform.put("status","Available");
+            } else {
+                joform.put("status","Not Available");
+            }
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -168,6 +177,11 @@ public class TableActivity extends AppCompatActivity {
         try {
             joform.put("number",ettnumber.getText().toString());
             joform.put("extend",ettextend.getText().toString());
+            if(rgtstatus.getCheckedRadioButtonId() == R.id.rbtavailable) {
+                joform.put("status","Available");
+            } else {
+                joform.put("status","Not Available");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

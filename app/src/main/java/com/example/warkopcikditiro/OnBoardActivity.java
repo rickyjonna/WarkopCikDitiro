@@ -54,7 +54,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
     MenuItem itemchangepassword;
     TextView tvtotalpenjualan, tvnamauser,tvtipeuser,tvdcpclose, tvdoclose, tvdotableclose, tvdogoclose, tvdogrclose, tvdotaclose;
     ImageButton ibkeluar, iborder, iborderlist, ibkitchen, ibtcashier;
-    LinearLayout viewgroupadmin;
+    LinearLayout viewgroupadmin, viewgroupadmin2;
     ActiveUser activeuser;
     EmptyStock emptystockp, emptystocki;
     Table table;
@@ -106,6 +106,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         civfotouser = findViewById(R.id.civfotouser);
         itemchangepassword = findViewById(R.id.itemchangepassword);
         viewgroupadmin = findViewById(R.id.viewgroupadmin);
+        viewgroupadmin2 = findViewById(R.id.viewgroupadmin2);
         tvtotalpenjualan = findViewById(R.id.tvtotalpenjualan);
         ibkeluar = findViewById(R.id.ibkeluar);
         rvactiveuser = findViewById(R.id.rvactiveuser);
@@ -285,6 +286,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                 editor.apply();
                 if(userobject.getString("user_type_id").equals("1")){
                     viewgroupadmin.setVisibility(View.VISIBLE);
+                    viewgroupadmin2.setVisibility(View.VISIBLE);
                     //pasang total penjualan ke textview
                     tvtotalpenjualan.setText(objectresult.getString("today_income"));
                     //pasang data useraktif ke recycleview
@@ -297,6 +299,10 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                         activeuserlist.add(activeuser);
                     }
                     rvactiveuser.setAdapter(new ActiveUserAdapter(this,activeuserlist));
+                } else if (userobject.getString("user_type_id").equals("2")){
+                    viewgroupadmin2.setVisibility(View.VISIBLE);
+                } else {
+
                 }
                 //pasang data produk stok habis ke rv
                 JSONArray emptyproductjs = objectresult.getJSONArray("product");

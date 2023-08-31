@@ -257,6 +257,8 @@
                 </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/viewgroupadmin2"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

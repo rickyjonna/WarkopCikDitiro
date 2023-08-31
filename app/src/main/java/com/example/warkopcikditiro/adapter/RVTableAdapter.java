@@ -49,6 +49,7 @@ public class RVTableAdapter extends RecyclerView.Adapter<RVTableAdapter.RVTableV
         Table table = mtablelist.get(position);
         holder.tvtnumber.setText(String.valueOf(table.getnumber()));
         holder.tvtextend.setText(String.valueOf(table.getextend()));
+        holder.tvtstatus.setText(String.valueOf(table.getstatus()));
     }
 
     @Override
@@ -57,12 +58,13 @@ public class RVTableAdapter extends RecyclerView.Adapter<RVTableAdapter.RVTableV
     }
 
     public class RVTableViewHolder extends RecyclerView.ViewHolder {
-        TextView tvtnumber, tvtextend;
+        TextView tvtnumber, tvtextend, tvtstatus;
         ImageButton ibtedit, ibtdelete;
         public RVTableViewHolder(@NonNull View itemView, onitemclicklistener listener) {
             super(itemView);
             tvtnumber = itemView.findViewById(R.id.tvtnumber);
             tvtextend = itemView.findViewById(R.id.tvtextend);
+            tvtstatus = itemView.findViewById(R.id.tvtstatus);
             ibtedit = itemView.findViewById(R.id.ibtedit);
             ibtdelete = itemView.findViewById(R.id.ibtdelete);
 
