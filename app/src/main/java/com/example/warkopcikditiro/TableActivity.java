@@ -33,8 +33,8 @@ public class TableActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibttback;
-    TextView tvtusername, tvtusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvtlist;
     Table table;
@@ -47,7 +47,6 @@ public class TableActivity extends AppCompatActivity {
     Button bttsave;
     TextView tvttitle;
     int table_id;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,10 @@ public class TableActivity extends AppCompatActivity {
         ///listcontainer
         tablelist = new ArrayList<>();
         ///topbar
-        ibttback = findViewById(R.id.ibttback);
-        tvtusername = findViewById(R.id.tvtusername);
-        tvtusertype = findViewById(R.id.tvtusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvtlist = findViewById(R.id.rvtlist);
         bttadd = findViewById(R.id.bttadd);
@@ -78,11 +78,12 @@ public class TableActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_agent();
         ///topbar
-        tvtusername.setText(sharedpref.getString("user_name", ""));
-        tvtusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
+        tvtitle.setText(getString(R.string.title_table));
 
         //install widget
-        ibttback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });

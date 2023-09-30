@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -41,8 +42,8 @@ public class AddProductActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtapback;
-    TextView tvapusername, tvapusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //mainbar
     EditText etapname;
     Spinner spapcategory, spappartner;
@@ -96,9 +97,10 @@ public class AddProductActivity extends AppCompatActivity {
         ingredientlist = new ArrayList<>();
         selectedingredientlist = new ArrayList<>();
         ///topbar
-        ibtapback = findViewById(R.id.ibtapback);
-        tvapusername = findViewById(R.id.tvapusername);
-        tvapusertype = findViewById(R.id.tvapusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///mainbar
         etapname = findViewById(R.id.etapname);
         etapprice = findViewById(R.id.etapprice);
@@ -124,8 +126,8 @@ public class AddProductActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_addproduct();
         ///topbar
-        tvapusername.setText(sharedpref.getString("user_name", ""));
-        tvapusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
         //mainbar
         rvapagentlist.setLayoutManager(new LinearLayoutManager(this));
         setrvagentlist(agentlist);
@@ -135,7 +137,11 @@ public class AddProductActivity extends AppCompatActivity {
         setrvselectedingredientlist(selectedingredientlist);
 
         //install widget
-        ibtapback.setOnClickListener(view -> finish());
+        ibtback.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(this, ProductActivity.class));
+        });
+        tvtitle.setText(getString(R.string.title_addproduct));
         etapstock.setEnabled(false);
         etapminstock.setEnabled(false);
         cbapstock.setOnCheckedChangeListener((compoundButton, b) -> {

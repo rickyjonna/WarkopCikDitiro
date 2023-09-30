@@ -39,8 +39,8 @@ public class KitchenActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtkback;
-    TextView tvkusername, tvkusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvkorderlisttable, rvkolgoinformation, rvkolgrinformation, rvkolinformation;
         Table table;
@@ -87,9 +87,10 @@ public class KitchenActivity extends AppCompatActivity {
         sharedpref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE);
         editor = sharedpref.edit();
         ///topbar
-        ibtkback = findViewById(R.id.ibtkback);
-        tvkusername = findViewById(R.id.tvkusername);
-        tvkusertype = findViewById(R.id.tvkusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         //leftbar
         rvkorderlisttable = findViewById(R.id.rvkorderlisttable);
         rvkolgoinformation = findViewById(R.id.rvkolgoinformation);
@@ -106,8 +107,8 @@ public class KitchenActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_kitchen();
             ///topbar
-        tvkusername.setText(sharedpref.getString("user_name", ""));
-        tvkusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
             ///leftbar
         rvkorderlisttable.setLayoutManager(new GridLayoutManager(this,3,GridLayoutManager.VERTICAL,false));
         setrvorderlisttable(tablelist);
@@ -127,10 +128,11 @@ public class KitchenActivity extends AppCompatActivity {
 
 
         //install widget
-        ibtkback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
                 finish();
                 startActivity(new Intent(KitchenActivity.this, OnBoardActivity.class));
         });
+        tvtitle.setText(getString(R.string.title_kitchen));
         btdkpsprocess.setOnClickListener(view -> {
             dialogsameproduct.dismiss();
             processbyproductsame();

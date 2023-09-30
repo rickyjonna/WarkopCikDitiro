@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl1"
+        app:layout_constraintGuide_percent="0.05"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl2"
+        app:layout_constraintGuide_percent="0.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl3"
+        app:layout_constraintGuide_percent="0.95"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+    <ImageButton
+        android:id="@+id/ibtback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl1"
+        app:layout_constraintStart_toStartOf="@id/gl1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_arrowback_50"
+        android:background="@color/blue"
+        android:contentDescription="@string/back"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civfotouser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toEndOf="@+id/ibtback"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/contohfotoprofil"/>
+
+    <LinearLayout
+        android:id="@+id/userlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/civfotouser"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="10dp">
+
+        <TextView
+            android:id="@+id/namauser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/tes_nama_user"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tipeuser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/tes_tipe_user"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/namajudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/gl2"
+        app:layout_constraintLeft_toLeftOf="@id/gl2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/tes_judul"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="35sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

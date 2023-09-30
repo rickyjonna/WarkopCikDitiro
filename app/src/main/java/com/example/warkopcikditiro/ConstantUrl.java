@@ -1,7 +1,7 @@
 package com.example.warkopcikditiro;
 
 public class ConstantUrl {
-    public static final String URL = "http://192.168.100.79:8000/";
+    public static final String URL = "http://192.168.100.79:8080/";
     public static final String LOGIN = URL+"login";
     public static final String DASHBORD = URL+"dashboard/";
     public static final String CHANGEPASSWORD = URL+"updatepassword";
@@ -22,6 +22,7 @@ public class ConstantUrl {
     public static final String CHECKOUT = URL+"checkout/";
     public static final String PRODUCT = URL+"product";
     public static final String PRODUCTSTOCK = URL+"liststock";
+    public static final String UPDATEPRODUCTSTOCK = URL+"updatestock/";
     public static final String LISTPRODUCTALERT = URL+"listproductalert";
     public static final String DELETEPRODUCT = URL+"deleteproduct/";
     public static final String ADDPRODUCT = URL+"addproduct";

@@ -35,8 +35,8 @@ import java.util.List;
 public class OrderListActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
-    ImageButton ibtolback;
-    TextView tvolusername, tvolusertype, tvolinformation, tvolorderedproduct, tvolchangeorderlist;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle, tvolinformation, tvolorderedproduct, tvolchangeorderlist;
     SearchView svolproduct;
     RecyclerView rvolproduct, rvolproductordered;
     Product product;
@@ -56,9 +56,10 @@ public class OrderListActivity extends AppCompatActivity {
         //install variable
         sharedpref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE);
         editor = sharedpref.edit();
-        ibtolback = findViewById(R.id.ibtolback);
-        tvolusername = findViewById(R.id.tvolusername);
-        tvolusertype = findViewById(R.id.tvolusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         tvolinformation = findViewById(R.id.tvolinformation);
         svolproduct = findViewById(R.id.svolproduct);
         rvolproduct = findViewById(R.id.rvolproduct);
@@ -80,8 +81,8 @@ public class OrderListActivity extends AppCompatActivity {
         extractapi_orderlistlist();
         setrvproduct(productorderedlist);
         setrvproduct2ordered(productorderedlist);
-        tvolusername.setText(sharedpref.getString("user_name", ""));
-        tvolusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
         if (sharedpref.getString("order_table_id", "").equals("")) {
             tvolinformation.setText(sharedpref.getString("order_information", ""));
         } else {
@@ -94,7 +95,7 @@ public class OrderListActivity extends AppCompatActivity {
         etolnote.setText(sharedpref.getString("order_note",""));
 
         //install widget
-        ibtolback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             editor.remove("order_table_id");
             editor.remove("order_table_number");
             editor.remove("order_table_extend");
@@ -104,6 +105,7 @@ public class OrderListActivity extends AppCompatActivity {
             editor.apply();
             finish();
         });
+        tvtitle.setText(getString(R.string.title_orderlist));
         svolproduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String searchquery) {

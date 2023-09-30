@@ -37,8 +37,8 @@ public class OrderActivity extends AppCompatActivity{
 
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
-    ImageButton ibtoback;
-    TextView tvousername, tvousertype, tvotablenumber,tvototalprice;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle, tvotablenumber,tvototalprice;
     SearchView svoproduct;
     String selectedfilter;
     RecyclerView rvoproduct, rvoproductordered;
@@ -57,9 +57,10 @@ public class OrderActivity extends AppCompatActivity{
         //install widget
         sharedpref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE);
         editor = sharedpref.edit();
-        ibtoback = findViewById(R.id.ibtoback);
-        tvousername = findViewById(R.id.tvousername);
-        tvousertype = findViewById(R.id.tvousertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         tvotablenumber = findViewById(R.id.tvotablenumber);
         svoproduct = findViewById(R.id.svoproduct);
         rvoproduct = findViewById(R.id.rvoproduct);
@@ -85,8 +86,8 @@ public class OrderActivity extends AppCompatActivity{
         rvoproductordered.setAdapter(productorderedadapter);
 
         //ambil data
-        tvousername.setText(sharedpref.getString("user_name",""));
-        tvousertype.setText(sharedpref.getString("user_type",""));
+        tvusername.setText(sharedpref.getString("user_name",""));
+        tvusertype.setText(sharedpref.getString("user_type",""));
         if (sharedpref.getString("order_table_number", "").equals("")){
             tvotablenumber.setText(sharedpref.getString("order_information",""));
         } else {
@@ -99,6 +100,13 @@ public class OrderActivity extends AppCompatActivity{
         extractapi();
 
         //widget
+        ibtback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goback();
+            }
+        });
+        tvtitle.setText(getString(R.string.title_order));
         FilterWidgets(); //set edittext for search product
         btoinsertorder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +114,6 @@ public class OrderActivity extends AppCompatActivity{
                 insertorder();
             }
         });
-        //some button automethod from layout
     }
 
     public void extractapi() {
@@ -233,7 +240,7 @@ public class OrderActivity extends AppCompatActivity{
         rvoproductordered.setAdapter(productorderedadapter);
     }
 
-    public void goback(View view){
+    public void goback(){
         editor.remove("order_table_id");
         editor.remove("order_agent_id");
         editor.remove("order_information");

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">WarkopCikDitiro</string>
+    <string name="tes_nama_user">Tes Nama User</string>
+    <string name="tes_tipe_user">Tes Tipe User</string>
+    <string name="tes_judul">Tes Judul</string>
+    <string name="nama_toko">ARABICA COFFEE</string>
+    <string name="logout">Keluar</string>
+    <string name="title_product">PRODUK</string>
+    <string name="title_agent">AGEN</string>
+    <string name="title_ingredient">BAHAN</string>
+    <string name="title_partner">REKAN</string>
+    <string name="notification">Notifikasi</string>
+    <string name="back">Kembali</string>
+    <string name="title_table">MEJA</string>
+    <string name="title_stock">STOK PRODUK</string>
+    <string name="title_payment">PEMBAYARAN</string>
+    <string name="title_user">PENGGUNA</string>
+    <string name="title_addproduct">TAMBAH PRODUK</string>
+    <string name="title_cashier">KASIR</string>
+    <string name="title_kitchen">DAPUR</string>
+    <string name="title_orderlist">LIST PESANAN</string>
+    <string name="title_order">BUAT PESANAN</string>
 </resources>

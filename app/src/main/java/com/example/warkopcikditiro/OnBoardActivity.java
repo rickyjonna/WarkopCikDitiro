@@ -52,8 +52,8 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
     CircleImageView civfotouser;
     PopupMenu popupfotouser;
     MenuItem itemchangepassword;
-    TextView tvtotalpenjualan, tvnamauser,tvtipeuser,tvdcpclose, tvdoclose, tvdotableclose, tvdogoclose, tvdogrclose, tvdotaclose;
-    ImageButton ibkeluar, iborder, iborderlist, ibkitchen, ibtcashier;
+    TextView tvtotalpenjualan, tvnamauser,tvtipeuser, tvnamajudul, tvdotableclose, tvdogoclose, tvdogrclose, tvdotaclose;
+    ImageButton tvdcpclose, tvdoclose, ibkeluar, iborder, iborderlist, ibkitchen, ibtcashier;
     LinearLayout viewgroupadmin, viewgroupadmin2;
     ActiveUser activeuser;
     EmptyStock emptystockp, emptystocki;
@@ -104,6 +104,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
         tvnamauser = findViewById(R.id.namauser);
         tvtipeuser = findViewById(R.id.tipeuser);
         civfotouser = findViewById(R.id.civfotouser);
+        tvnamajudul = findViewById(R.id.namajudul);
         itemchangepassword = findViewById(R.id.itemchangepassword);
         viewgroupadmin = findViewById(R.id.viewgroupadmin);
         viewgroupadmin2 = findViewById(R.id.viewgroupadmin2);
@@ -221,10 +222,11 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
             startActivity(new Intent(OnBoardActivity.this, ProductActivity.class));
         });
         //8.Product Category
-        btdproductcategory.setOnClickListener(view -> {
-            finish();
-            startActivity(new Intent(this, ProductCategoryActivity.class));
-        });
+//        btdproductcategory.setOnClickListener(view -> {
+//            finish();
+//            startActivity(new Intent(this, ProductCategoryActivity.class));
+//        });
+        btdproductcategory.setVisibility(View.GONE);
         //9.Agent
         btdagent.setOnClickListener(view -> {
             finish();
@@ -265,6 +267,8 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
             finish();
             startActivity(new Intent(this, PaymentActivity.class));
         });
+        //17.Title
+        tvnamajudul.setText(getString(R.string.nama_toko));
     }
 
     //Fungsi
@@ -299,7 +303,7 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
                         activeuserlist.add(activeuser);
                     }
                     rvactiveuser.setAdapter(new ActiveUserAdapter(this,activeuserlist));
-                } else if (userobject.getString("user_type_id").equals("2")){
+                } else if (userobject.getString("user_type_id").equals("2") || (userobject.getString("user_type_id").equals("3"))) {
                     viewgroupadmin2.setVisibility(View.VISIBLE);
                 } else {
 

@@ -37,8 +37,8 @@ public class UserActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtuback;
-    TextView tvuusername, tvuusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvulist;
     User user;
@@ -70,9 +70,10 @@ public class UserActivity extends AppCompatActivity {
         userlist = new ArrayList<>();
         usertypelist = new ArrayList<>();
         ///topbar
-        ibtuback = findViewById(R.id.ibtuback);
-        tvuusername = findViewById(R.id.tvuusername);
-        tvuusertype = findViewById(R.id.tvuusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvulist = findViewById(R.id.rvulist);
         btuadd = findViewById(R.id.btuadd);
@@ -88,11 +89,11 @@ public class UserActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_user();
         ///topbar
-        tvuusername.setText(sharedpref.getString("user_name", ""));
-        tvuusertype.setText(sharedpref.getString("user_type", ""));
-
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
+        tvtitle.setText(getString(R.string.title_user));
         //install widget
-        ibtuback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });

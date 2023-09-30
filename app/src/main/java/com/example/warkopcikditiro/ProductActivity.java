@@ -38,8 +38,8 @@ public class ProductActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtpback, ibproductstocknotif;
-    TextView tvpusername, tvpusertype;
+    ImageButton ibtback, ibtproductstocknotif;
+    TextView tvusername, tvusertype, tvtitle;
     Dialog dproductstocknotif;
         RecyclerView rvdpstocknotif;
             Product product;
@@ -77,10 +77,11 @@ public class ProductActivity extends AppCompatActivity {
         sharedpref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE);
         editor = sharedpref.edit();
         ///topbar
-        ibtpback = findViewById(R.id.ibtpback);
-        ibproductstocknotif = findViewById(R.id.ibproductstocknotif);
-        tvpusername = findViewById(R.id.tvpusername);
-        tvpusertype = findViewById(R.id.tvpusertype);
+        ibtback = findViewById(R.id.ibtback);
+        ibtproductstocknotif = findViewById(R.id.ibtproductstocknotif);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///main
         rvdpstocknotif = dproductstocknotif.findViewById(R.id.rvdpstocknotif);
         svproduct = findViewById(R.id.svproduct);
@@ -97,16 +98,17 @@ public class ProductActivity extends AppCompatActivity {
         //get data + fill layout
         api_product();
         ///topbar
-        tvpusername.setText(sharedpref.getString("user_name", ""));
-        tvpusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
 
         //install widget
         ///topbar
-        ibtpback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(ProductActivity.this, OnBoardActivity.class));
         });
-        ibproductstocknotif.setOnClickListener(new View.OnClickListener() {
+        tvtitle.setText(getString(R.string.title_product));
+        ibtproductstocknotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 extractapi_listproductalert();

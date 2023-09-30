@@ -2,6 +2,7 @@ package com.example.warkopcikditiro.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,9 @@ public class EmptyStockAdapter extends RecyclerView.Adapter<EmptyStockAdapter.Em
         holder.btemptystock.setText(emptystock.getName());
         if(emptystock.getQuantity()>0)
         {
-            holder.btemptystock.setBackgroundColor(Color.parseColor("#FFFF00"));
+            holder.btemptystock.setBackgroundResource(R.drawable.shape_smoothrectangle_yellow);
         } else{
-            holder.btemptystock.setBackgroundColor(Color.parseColor("#FF0000"));
+            holder.btemptystock.setBackgroundResource(R.drawable.shape_smoothrectangle_red);
         }
         holder.btemptystock.setOnClickListener(view -> {
             // pergi ke stok halaman atur stok

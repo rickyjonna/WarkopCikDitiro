@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +18,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.warkopcikditiro.adapter.IngredientAdapter;
 import com.example.warkopcikditiro.model.Ingredient;
+import com.example.warkopcikditiro.model.Product;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +31,8 @@ public class IngredientActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtiback;
-    TextView tviusername, tviusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvilist;
     Ingredient ingredient;
@@ -56,9 +59,10 @@ public class IngredientActivity extends AppCompatActivity {
         ///listcontainer
         ingredientlist = new ArrayList<>();
         ///topbar
-        ibtiback = findViewById(R.id.ibtiback);
-        tviusername = findViewById(R.id.tviusername);
-        tviusertype = findViewById(R.id.tviusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvilist = findViewById(R.id.rvilist);
         btiadd = findViewById(R.id.btiadd);
@@ -73,16 +77,17 @@ public class IngredientActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_ingredient();
         ///topbar
-        tviusername.setText(sharedpref.getString("user_name", ""));
-        tviusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
         ///leftbar
         setrvingredientlist(ingredientlist);
 
         //install widget
-        ibtiback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });
+        tvtitle.setText(getString(R.string.title_ingredient));
         btiadd.setOnClickListener(view -> {
             finish();
             startActivity(getIntent());

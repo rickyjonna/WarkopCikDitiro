@@ -41,8 +41,8 @@ public class AgentActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtaback;
-    TextView tvausername, tvausertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvalist;
     Agent agent;
@@ -77,9 +77,10 @@ public class AgentActivity extends AppCompatActivity {
         agentlist = new ArrayList<>();
         paymentlist = new ArrayList<>();
         ///topbar
-        ibtaback = findViewById(R.id.ibtaback);
-        tvausername = findViewById(R.id.tvausername);
-        tvausertype = findViewById(R.id.tvausertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvalist = findViewById(R.id.rvalist);
         btaadd = findViewById(R.id.btaadd);
@@ -97,15 +98,16 @@ public class AgentActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_agent();
         ///topbar
-        tvausername.setText(sharedpref.getString("user_name", ""));
-        tvausertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
+        tvtitle.setText(getString(R.string.title_agent));
         ///leftbar
         setrvagentlist(agentlist);
         ///rightbar
         percentstate();
 
         //install widget
-        ibtaback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });

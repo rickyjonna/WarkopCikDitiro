@@ -1,107 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ProductActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/navbar_layout2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0"
-        android:background="@color/blue">
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glp1"
-            app:layout_constraintGuide_percent="0.05"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glp2"
-            app:layout_constraintGuide_percent="0.5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glp3"
-            app:layout_constraintGuide_percent="0.95"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <ImageButton
-            android:id="@+id/ibtpback"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/glp1"
-            app:layout_constraintStart_toStartOf="@id/glp1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_arrowback_50"
-            android:background="@color/blue" />
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civpphotouser"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ibtpback"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/contohfotoprofil"/>
-        <LinearLayout
-            android:id="@+id/llpuserlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/civpphotouser"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvpusername"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Tes Nama"
-                android:gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/tvpusertype"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Tes Tipe"
-                android:gravity="center_vertical"/>
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/glp2"
-            app:layout_constraintEnd_toEndOf="@id/glp2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="PRODUK"
-            android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/ibproductstocknotif"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/glp3"
-            app:layout_constraintStart_toStartOf="@id/glp3"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_notifications_50"
-            android:background="@color/blue"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="100dp"/>
     <SearchView
         android:id="@+id/svproduct"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="0"
         android:iconifiedByDefault="false"
-        android:queryHint="Cari Produk"/>
+        android:queryHint="Cari Produk"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -151,7 +68,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        android:layout_weight="0"
         android:layout_gravity="end"
         android:text="+"
         android:textSize="50dp"

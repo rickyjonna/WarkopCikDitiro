@@ -32,8 +32,8 @@ public class PartnerActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtptback;
-    TextView tvptusername, tvptusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvptlist;
     Partner partner;
@@ -60,9 +60,10 @@ public class PartnerActivity extends AppCompatActivity {
         ///listcontainer
         partnerlist = new ArrayList<>();
         ///topbar
-        ibtptback = findViewById(R.id.ibtptback);
-        tvptusername = findViewById(R.id.tvptusername);
-        tvptusertype = findViewById(R.id.tvptusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvptlist = findViewById(R.id.rvptlist);
         btptadd = findViewById(R.id.btptadd);
@@ -79,15 +80,16 @@ public class PartnerActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_partner();
         ///topbar
-        tvptusername.setText(sharedpref.getString("user_name", ""));
-        tvptusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
+        tvtitle.setText(getString(R.string.title_partner));
         ///leftbar
         setrvpartnerlist(partnerlist);
         ///rightbar
         percentstate();
 
         //install widget
-        ibtptback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });

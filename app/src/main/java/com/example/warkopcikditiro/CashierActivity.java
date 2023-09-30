@@ -47,8 +47,8 @@ public class CashierActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtcback;
-    TextView tvcusername, tvcusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvcorderlisttable, rvcolgoinformation, rvcolgrinformation, rvcolinformation;
     Table table;
@@ -73,7 +73,8 @@ public class CashierActivity extends AppCompatActivity {
     Button btcprint, btcdone;
     TextView tvcprint, tvcdone;
     Dialog dialogcheckout;
-        TextView tvdcoclose, tvdcototalprice;
+        TextView tvdcototalprice;
+        ImageButton tvdcoclose;
         EditText etdcoinformation;
         Button btdcodone;
 
@@ -103,9 +104,10 @@ public class CashierActivity extends AppCompatActivity {
         sharedpref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE);
         editor = sharedpref.edit();
         ///topbar
-        ibtcback = findViewById(R.id.ibtcback);
-        tvcusername = findViewById(R.id.tvcusername);
-        tvcusertype = findViewById(R.id.tvcusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         //leftbar
         rvcorderlisttable = findViewById(R.id.rvcorderlisttable);
         rvcolgoinformation = findViewById(R.id.rvcolgoinformation);
@@ -134,8 +136,8 @@ public class CashierActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_cashier();
         ///topbar
-        tvcusername.setText(sharedpref.getString("user_name", ""));
-        tvcusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
         ///leftbar
         rvcorderlisttable.setLayoutManager(new GridLayoutManager(this,3,GridLayoutManager.VERTICAL,false));
         setrvorderlisttable(tablelist);
@@ -152,10 +154,11 @@ public class CashierActivity extends AppCompatActivity {
         notselected();
 
         //install widget
-        ibtcback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this,OnBoardActivity.class));
         });
+        tvtitle.setText(getString(R.string.title_cashier));
         etcdiscount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -34,8 +34,8 @@ public class PaymentActivity extends AppCompatActivity {
     SharedPreferences sharedpref;
     SharedPreferences.Editor editor;
     //topbar
-    ImageButton ibtpayback;
-    TextView tvpayusername, tvpayusertype;
+    ImageButton ibtback;
+    TextView tvusername, tvusertype, tvtitle;
     //leftbar
     RecyclerView rvpaylist;
     Payment payment;
@@ -62,9 +62,10 @@ public class PaymentActivity extends AppCompatActivity {
         ///listcontainer
         paymentlist = new ArrayList<>();
         ///topbar
-        ibtpayback = findViewById(R.id.ibtpayback);
-        tvpayusername = findViewById(R.id.tvpayusername);
-        tvpayusertype = findViewById(R.id.tvpayusertype);
+        ibtback = findViewById(R.id.ibtback);
+        tvusername = findViewById(R.id.namauser);
+        tvusertype = findViewById(R.id.tipeuser);
+        tvtitle = findViewById(R.id.namajudul);
         ///leftbar
         rvpaylist = findViewById(R.id.rvpaylist);
         btpayadd = findViewById(R.id.btpayadd);
@@ -81,15 +82,16 @@ public class PaymentActivity extends AppCompatActivity {
         //get data + fill layout
         extractapi_payment();
         ///topbar
-        tvpayusername.setText(sharedpref.getString("user_name", ""));
-        tvpayusertype.setText(sharedpref.getString("user_type", ""));
+        tvusername.setText(sharedpref.getString("user_name", ""));
+        tvusertype.setText(sharedpref.getString("user_type", ""));
+        tvtitle.setText(getString(R.string.title_payment));
         ///leftbar
         setrvpaymentlist(paymentlist);
         ///rightbar
         percentstate();
 
         //install widget
-        ibtpayback.setOnClickListener(view -> {
+        ibtback.setOnClickListener(view -> {
             finish();
             startActivity(new Intent(this, OnBoardActivity.class));
         });

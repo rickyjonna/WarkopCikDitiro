@@ -2,30 +2,81 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/tvrvpsnumber"
-        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:background="@drawable/underline_border">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1"/>
-    <TextView
-        android:id="@+id/tvrvpsproduct_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product's Name"/>
-    <TextView
-        android:id="@+id/tvrvpstotal_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Stock Amount"/>
-    <TextView
-        android:id="@+id/tvrvpsminimum_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minimum_Amount"/>
-    <TextView
-        android:id="@+id/tvrvpsunit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Unit"/>
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama :"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/tvrvpsproduct_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product's Name"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumlah Stok :"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/tvrvpstotal_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Stock Amount"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/tvrvpsunit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unit"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minimal Stok :"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/tvrvpsminimum_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minimum_Amount"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/tvrvpsunit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unit"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/ibtedit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0"
+        android:src="@drawable/ic_baseline_edit_25"
+        android:background="@drawable/shape_circle"
+        android:backgroundTint="@color/blue"
+        android:contentDescription="Edit"/>
 </LinearLayout>

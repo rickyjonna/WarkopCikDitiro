@@ -5,85 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/navbar_layout3"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0"
-        android:background="@color/blue">
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glu1"
-            app:layout_constraintGuide_percent="0.05"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glu2"
-            app:layout_constraintGuide_percent="0.5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glu3"
-            app:layout_constraintGuide_percent="0.95"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-        <ImageButton
-            android:id="@+id/ibtuback"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/glu1"
-            app:layout_constraintStart_toStartOf="@id/glu1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_arrowback_50"
-            android:background="@color/blue" />
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civuphotouser"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ibtuback"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/contohfotoprofil"/>
-        <LinearLayout
-            android:id="@+id/lluuserlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/civuphotouser"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvuusername"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Tes Nama"
-                android:gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/tvuusertype"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Tes Tipe"
-                android:gravity="center_vertical"/>
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/glu2"
-            app:layout_constraintEnd_toEndOf="@id/glu2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="KARYAWAN"
-            android:textColor="@color/white"
-            android:gravity="center"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="100dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -108,17 +33,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scrollbars="vertical"/>
+
             <android.widget.Button
                 android:id="@+id/btuadd"
-                android:layout_gravity="end"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="0.1"
-                android:text="+"
-                android:textSize="50dp"
+                android:layout_gravity="end"
                 android:background="@drawable/shape_circle"
                 android:backgroundTint="@color/blue"
-                android:textColor="@color/white"/>
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="50dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

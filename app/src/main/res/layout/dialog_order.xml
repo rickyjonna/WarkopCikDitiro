@@ -6,16 +6,13 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:layout_gravity="center">
-    <TextView
+    <ImageButton
         android:id="@+id/tvdoclose"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:textColor="@color/black"
-        android:text="X"
-        android:textStyle="bold"
-        android:layout_gravity="end"
-        android:gravity="center"
-        android:background="@drawable/shape_circle"/>
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_close_64"
+        android:backgroundTint="@color/white"
+        android:layout_gravity="end"/>
     <TextView
         android:text="Jenis Pesanan"
         android:textColor="@color/black"
