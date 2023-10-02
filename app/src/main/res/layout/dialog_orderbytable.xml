@@ -7,16 +7,13 @@
     android:layout_width="650dp"
     android:layout_height="650dp"
     android:background="@color/white">
-    <TextView
+    <ImageButton
         android:id="@+id/tvdotableclose"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:textColor="@color/black"
-        android:text="X"
-        android:textStyle="bold"
-        android:layout_gravity="end"
-        android:gravity="center"
-        android:background="@drawable/shape_circle"/>
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_close_64"
+        android:backgroundTint="@color/white"
+        android:layout_gravity="end"/>
     <LinearLayout
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"

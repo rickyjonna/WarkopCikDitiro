@@ -52,8 +52,8 @@ public class OnBoardActivity extends AppCompatActivity implements PopupMenu.OnMe
     CircleImageView civfotouser;
     PopupMenu popupfotouser;
     MenuItem itemchangepassword;
-    TextView tvtotalpenjualan, tvnamauser,tvtipeuser, tvnamajudul, tvdotableclose, tvdogoclose, tvdogrclose, tvdotaclose;
-    ImageButton tvdcpclose, tvdoclose, ibkeluar, iborder, iborderlist, ibkitchen, ibtcashier;
+    TextView tvtotalpenjualan, tvnamauser,tvtipeuser, tvnamajudul;
+    ImageButton tvdcpclose, tvdoclose, tvdotableclose, tvdogoclose, tvdogrclose, tvdotaclose, ibkeluar, iborder, iborderlist, ibkitchen, ibtcashier;
     LinearLayout viewgroupadmin, viewgroupadmin2;
     ActiveUser activeuser;
     EmptyStock emptystockp, emptystocki;

@@ -18,7 +18,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,7 @@ public class AddProductActivity extends AppCompatActivity {
     CheckBox cbapstock;
     boolean isonstock = false;
     boolean isonformula = false;
+    LinearLayout llformula;
     CheckBox cbapformula;
     RecyclerView rvdapilist;
         Ingredient ingredient;
@@ -75,6 +78,7 @@ public class AddProductActivity extends AppCompatActivity {
         SelectedIngredientAdapter selectedingredientadapter;
     Button btdapfok;
     EditText etapinformation;
+    Switch swshow;
     Button btapsave;
 
     @Override
@@ -116,11 +120,13 @@ public class AddProductActivity extends AppCompatActivity {
         tvappercent = findViewById(R.id.tvappercent);
         btaprp = findViewById(R.id.btaprp);
         tvaprp = findViewById(R.id.tvaprp);
+        llformula = findViewById(R.id.llformula);
         cbapformula = findViewById(R.id.cbapformula);
         rvdapilist = dialog_formula.findViewById(R.id.rvdapilist);
         btdapfok = dialog_formula.findViewById(R.id.btdapfok);
         rvapselectedingredient = findViewById(R.id.rvapselectedingredient);
         etapinformation = findViewById(R.id.etapinformation);
+        swshow = findViewById(R.id.swshow);
         btapsave = findViewById(R.id.btapsave);
 
         //get data + fill layout
@@ -306,6 +312,10 @@ public class AddProductActivity extends AppCompatActivity {
         etapstock.setEnabled(true);
         etapminstock.setEnabled(true);
         etapunitstock.setEnabled(true);
+        isonformula = false;
+        cbapformula.setChecked(false);
+        llformula.setVisibility(View.GONE);
+        cbapformula.setVisibility(View.GONE);
     }
 
     private void hasnostock() {
@@ -313,6 +323,8 @@ public class AddProductActivity extends AppCompatActivity {
         etapstock.setEnabled(false);
         etapminstock.setEnabled(false);
         etapunitstock.setEnabled(false);
+        llformula.setVisibility(View.VISIBLE);
+        cbapformula.setVisibility(View.VISIBLE);
     }
 
     private void hasformula() {
@@ -393,6 +405,11 @@ public class AddProductActivity extends AppCompatActivity {
                 joform.put("isformula",0);
             }
             joform.put("information",etapinformation.getText().toString());
+            if(swshow.isChecked()){
+                joform.put("editable",1);
+            }else{
+                joform.put("editable",0);
+            }
             for (int i=0; i<agentlist.size(); i++){
                 if(agentlist.get(i).getPrice() == 0){
                     continue;
@@ -409,6 +426,7 @@ public class AddProductActivity extends AppCompatActivity {
             try{
                 if(response.getString("message").equals("InsertProduct - Success")){
                     finish();
+                    startActivity(new Intent(AddProductActivity.this, ProductActivity.class));
                 }
                 Toast.makeText(this,response.getString("message"), Toast.LENGTH_SHORT).show();
             }catch (JSONException e) {

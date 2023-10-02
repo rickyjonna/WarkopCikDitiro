@@ -132,6 +132,8 @@ public class IngredientActivity extends AppCompatActivity {
                 etiunit.setText(String.valueOf(xingredientlist.get(position).getUnit()));
                 etiamount.setText(String.valueOf(xingredientlist.get(position).getAmount()));
                 etiminimalamount.setText(String.valueOf(xingredientlist.get(position).getMinimalamount()));
+                etiname.setEnabled(false);
+                etiunit.setEnabled(false);
                 btisave.setOnClickListener(view -> extractapi_editingredient());
             }
             @Override
@@ -142,6 +144,8 @@ public class IngredientActivity extends AppCompatActivity {
                 etiunit.setText(String.valueOf(xingredientlist.get(position).getUnit()));
                 etiamount.setText(String.valueOf(xingredientlist.get(position).getAmount()));
                 etiminimalamount.setText(String.valueOf(xingredientlist.get(position).getMinimalamount()));
+                etiname.setEnabled(false);
+                etiunit.setEnabled(false);
                 btisave.setOnClickListener(view -> extractapi_editingredient());
             }
             @Override
@@ -180,6 +184,7 @@ public class IngredientActivity extends AppCompatActivity {
     private void extractapi_editingredient() {
         JSONObject joform = new JSONObject();
         try {
+            joform.put("merchant_id",sharedpref.getString("merchant_id",null));
             joform.put("name",etiname.getText().toString());
             joform.put("unit",etiunit.getText().toString());
             joform.put("amount",etiamount.getText().toString());
